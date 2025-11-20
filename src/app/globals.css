@@ -1,26 +1,174 @@
+/* =========================
+   ✅ Global Styles (Fixed)
+   ========================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap");
 @import "tailwindcss";
-
+/* ----------------------------------
+   🌿 Custom Theme Variables
+---------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* SMG Brand Colors */
+  --smg-green: #4caf50;
+  --smg-dark: #2c2c2c;
+  --smg-neutral: #6d6d6d;
+
+  /* Font Families */
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Calibri", sans-serif; /* Universal Font (Calibri) */
+  --font-montserrat: "Montserrat", sans-serif;
+
+  /* Radius & Color Tokens (shadcn-compatible) */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ----------------------------------
+   🌗 Dark Mode
+---------------------------------- */
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ----------------------------------
+   🌐 Base Styles
+---------------------------------- */
 
+html,
 body {
-  background: var(--background);
+  overflow-x: hidden;
+  font-family: var(--font-inter);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  /* cursor: url(/public/cursor1.png), auto; 4 0 sets the hotspot (tip of the arrow) */
 }
+
+/* a,
+button,
+[role="button"],
+input[type="submit"],
+.clickable {
+  cursor: url(/public/cursor-pointer.png), pointer;
+} */
+
+/* Headings use Poppins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins);
+}
+
+/* ----------------------------------
+   🌿 Scrollbar Styles
+---------------------------------- */
+
+::-webkit-scrollbar {
+  width: 0.462rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--smg-green);
+  border-radius: 0.5rem;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ----------------------------------
+   🎨 Utility Classes
+---------------------------------- */
+
+.text-smg-green {
+  color: var(--smg-green);
+}
+.bg-smg-green {
+  background-color: var(--smg-green);
+}
+.text-smg-neutral {
+  color: var(--smg-neutral);
+}
+.bg-smg-dark {
+  background-color: var(--smg-dark);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* ----------------------------------
+   🔘 Buttons
+---------------------------------- */
+
+.button-primary {
+  background-color: var(--smg-green);
+  color: white;
+  font-family: var(--font-poppins);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #43a047;
+}
+
+/* ----------------------------------
+   🧱 Shadcn Base Layer
+---------------------------------- */
