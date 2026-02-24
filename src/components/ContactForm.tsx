@@ -47,11 +47,11 @@ const INDUSTRIES = [
 ];
 
 type FormState = {
-  name: string;
+  fullName: string;
   email: string;
   service: string;
   message: string;
-  contact: string;
+  phone: string;
   companyName: string;
   industryName: string;
   location: string;
@@ -61,11 +61,11 @@ type FormState = {
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const initialForm: FormState = {
-  name: "",
+  fullName: "",
   email: "",
   service: "",
   message: "",
-  contact: "",
+  phone: "",
   companyName: "",
   industryName: "",
   location: "",
@@ -81,7 +81,7 @@ const ContactForm = () => {
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!contactForm.name.trim()) newErrors.name = "Full name is required";
+    if (!contactForm.fullName.trim()) newErrors.fullName = "Full name is required";
 
     if (!contactForm.email.trim()) newErrors.email = "Email is required";
     else if (
@@ -89,10 +89,10 @@ const ContactForm = () => {
     )
       newErrors.email = "Invalid email address";
 
-    if (!contactForm.contact.trim())
-      newErrors.contact = "Contact number is required";
-    else if (!/^\d{10}$/.test(contactForm.contact))
-      newErrors.contact = "Enter a valid 10-digit number";
+    if (!contactForm.phone.trim())
+      newErrors.phone = "Phone number is required";
+    else if (!/^\d{10}$/.test(contactForm.phone))
+      newErrors.phone = "Enter a valid 10-digit number";
 
     if (!contactForm.service) newErrors.service = "Please select a service";
     if (!contactForm.companyName.trim())
@@ -182,10 +182,10 @@ const ContactForm = () => {
         <div className="grid md:grid-cols-2 gap-6">
           <InputField
             label="Full Name"
-            onChange={(e) => handleChange("name", e.target.value)}
-            value={contactForm.name}
+            onChange={(e) => handleChange("fullName", e.target.value)}
+            value={contactForm.fullName}
             icon={GoPersonFill}
-            error={errors.name}
+            error={errors.fullName}
             placeholder="Enter your full name"
             required
             type="text"
@@ -205,11 +205,11 @@ const ContactForm = () => {
         {/* Row 2: Contact + Company */}
         <div className="grid md:grid-cols-2 gap-6">
           <InputField
-            label="Contact Number"
-            onChange={(e) => handleChange("contact", e.target.value)}
-            value={contactForm.contact}
+            label="Phone Number"
+            onChange={(e) => handleChange("phone", e.target.value)}
+            value={contactForm.phone}
             icon={IoIosCall}
-            error={errors.contact}
+            error={errors.phone}
             placeholder="Enter your phone number"
             required
             type="text"
